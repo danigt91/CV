@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "Video Streaming Seek";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        <h2>Video Streaming with Seek</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <video src="~/Resources/Zhyra HeadShot.mp4" autoplay controls contextmenu="mymenu"></video>
+    </div>
+</div>
+
+<div contextmenu="mymenu">
+
+    <menu type="context" id="mymenu">
+        <menuitem label="Refresh"></menuitem>
+        <menuitem label="Twitter"></menuitem>
+    </menu>
+
+</div>

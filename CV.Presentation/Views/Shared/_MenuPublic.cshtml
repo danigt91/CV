@@ -1,0 +1,20 @@
+﻿@using CV.Models.App
+@model List<EnlaceViewModel>
+
+<div ng-controller="MenuPublicCtrl" class="navbar navbar-inverse navbar-fixed-top" ng-init="enlaces = @Json.Encode(Model)">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a ng-href="{{$root.appRoot}}" ng-bind="$root.appName" class = "navbar-brand"></a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li ng-repeat="enlace in enlaces"><a ng-href="{{enlace.Url}}" ng-bind="enlace.Texto"></a></li>                        
+            </ul>
+        </div>
+    </div>
+</div>
