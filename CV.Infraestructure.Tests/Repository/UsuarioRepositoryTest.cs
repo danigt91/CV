@@ -44,6 +44,7 @@ namespace CV.Infraestructure.Tests.Repository
             Trace.WriteLine("Inyeccion de dependencias ok");
         }
 
+        [Ignore]
         [TestMethod]
         public void CreateUserTest()
         {
@@ -93,7 +94,7 @@ namespace CV.Infraestructure.Tests.Repository
 
 
         [TestMethod]
-        [ExpectedException(typeof(DbUpdateException))]
+        [ExpectedException(typeof(DbEntityValidationException))]
         public void CreateUserUserNameFailTest()
         {
             var nuevoUsuario = new Usuario()
@@ -107,7 +108,7 @@ namespace CV.Infraestructure.Tests.Repository
             {
                 nuevoUsuario = _usuario.Create(nuevoUsuario);
             }
-            catch (DbUpdateException e)
+            catch (DbEntityValidationException e)
             {
                 Exception eDeep = e;
                 Trace.WriteLine(eDeep.Message);
@@ -123,6 +124,26 @@ namespace CV.Infraestructure.Tests.Repository
             Trace.WriteLine("Usuario ID: " + nuevoUsuario.ID);
 
             Trace.WriteLine("Inyeccion de dependencias ok");
+        }
+
+        [TestMethod]
+        public void GetUserOK()
+        {
+            Usuario match = new Usuario()
+            {
+                UserName = "danigt91",
+                Password = "QWERTY"
+            };
+
+            var x = _usuario.All().Where(user => user.UserName == match.UserName && user.Password == match.Password);
+            if (x.Any())
+            {
+                Trace.WriteLine("User OK");
+            }
+            else
+            {
+                throw new UnauthorizedAccessException("User dont exist or password dont match.");
+            }            
         }
     }
 }
