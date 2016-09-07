@@ -186,6 +186,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\Blogs\BlogsAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AppController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -263,6 +264,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Areas\Blogs\Views\web.config" />
     <None Include="Scripts\libs\jquery\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\libs\angular\i18n\angular-locale_aa-dj.js" />
     <Content Include="Scripts\libs\angular\i18n\angular-locale_aa-er.js" />
@@ -1041,7 +1043,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\" />
+    <Folder Include="Areas\Blogs\Controllers\" />
+    <Folder Include="Areas\Blogs\Models\" />
+    <Folder Include="Areas\Blogs\Views\Shared\" />
     <Folder Include="Views\App\" />
   </ItemGroup>
   <ItemGroup>
@@ -1052,6 +1056,10 @@
     <ProjectReference Include="..\CV.CrossCutting\CV.CrossCutting.csproj">
       <Project>{99f4b9c4-6d96-43e3-b3a8-7dc3cbf6d0bb}</Project>
       <Name>CV.CrossCutting</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CV.Presentation.Resources\CV.Presentation.Resources.csproj">
+      <Project>{298217a8-312d-433f-9dde-0b34316f2229}</Project>
+      <Name>CV.Presentation.Resources</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

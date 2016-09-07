@@ -1,9 +1,9 @@
 ﻿(function ($, angular) {
 
     angular.module("app")
-    .controller("HomeCtrl", ["$scope", function ($scope) {
+    .controller("HomeCtrl", ["$scope", function ($scope) {        
 
-        $scope.title = "Home";
+        $scope.resources = {};
 
     }]);
 

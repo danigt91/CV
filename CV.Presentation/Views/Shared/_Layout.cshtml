@@ -1,5 +1,9 @@
-﻿<!DOCTYPE html>
-<html ng-app="app" ng-controller="AppCtrl">
+﻿@using res = CV.Presentation.Resources.Shared;
+<!DOCTYPE html>
+<html ng-app="app" ng-controller="AppCtrl" 
+      ng-init="$root.appName='@res.Shared.AppName'; 
+      $root.technologyProvided='@res.Shared.TechnologyProvided';
+      $root.autor = '@res.Shared.Autor'">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
@@ -12,8 +16,8 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application - <span ng-bind="$root.appName"></span></p>
+        <footer>            
+            <p>&copy; @DateTime.Now.Year - <span ng-bind="$root.footer"></span></p>
         </footer>
     </div>
 
