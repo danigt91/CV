@@ -1,9 +1,12 @@
-﻿@{
+﻿@using CV.Presentation.Helpers
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 
-    var culture = ViewContext.RouteData.Values["culture"]?.ToString();
+    LocalizationHelper.SetLocalization(ViewContext);
+    
+    /*var culture = ViewContext.RouteData.Values["culture"]?.ToString();
     if (!culture.IsEmpty())
     {
         Culture = UICulture = culture;
-    }
+    }*/
 }

@@ -1,10 +1,9 @@
-﻿(function ($, angular) {
-
-    angular.module("app")
-    .controller("HomeCtrl", ["$scope", function ($scope) {        
+﻿define(['app'], function(app){
+    return function ($scope) {
 
         $scope.resources = {};
 
-    }]);
+        $scope.something = "Something!";
 
-})(jQuery, angular);
+    };
+});

@@ -61,7 +61,7 @@ namespace CV.Presentation.Resources.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Daniel Garcia Tovar.
+        ///   Looks up a localized string similar to Daniel Garcia Tovar (EN).
         /// </summary>
         public static string Name {
             get {

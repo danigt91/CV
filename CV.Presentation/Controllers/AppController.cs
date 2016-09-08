@@ -16,12 +16,14 @@ namespace CV.Controllers
             var enlaces = new List<EnlaceViewModel>();
             enlaces.Add(new EnlaceViewModel()
             {
-                Url = URLDecode("Index", "Home", new { area = "" }),
+                //Url = URLDecode("Index", "Home", new { area = "" }),
+                Url = "home.index",
                 Texto = "Home"
             });
             enlaces.Add(new EnlaceViewModel()
             {
-                Url = URLDecode("Index", "Video", new { area = "" }),
+                //Url = URLDecode("Index", "Video", new { area = "" }),
+                Url = "video.index",
                 Texto = "Video Streamming"
             });
 

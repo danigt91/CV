@@ -1,10 +1,9 @@
-﻿(function ($, angular) {
+﻿define(['app'], function (app) {
 
-    angular.module("app")
-    .controller("MenuPublicCtrl", ["$scope", function ($scope) {
+    return function ($scope) {
 
         $scope.title = "Home";
 
-    }]);
+    }
 
-})(jQuery, angular);
+});

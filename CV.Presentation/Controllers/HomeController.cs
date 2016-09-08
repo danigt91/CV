@@ -12,7 +12,12 @@ namespace CV.Controllers
         {
             ViewBag.Title = "Home Page";
 
-            return View();
+            return View("Index");
+        }
+
+        public ActionResult Home()
+        {
+            return PartialView("_Home");
         }
     }
 }

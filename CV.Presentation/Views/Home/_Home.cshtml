@@ -1,0 +1,20 @@
+﻿@using CV.Presentation.Helpers;
+@{ var resMng = CV.Presentation.Resources.Home.Index.ResourceManager; }
+@section scripts{
+    <script type="text/javascript" src="@Url.Content("~/Scripts/controllers/Home/HomeCtrl.js")"></script>
+}
+@section styles{
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/Home/Index.css")">
+}
+@{ 
+    LocalizationHelper.SetLocalization(ViewContext);
+}
+
+<div class="row" ng-init="resources = @ResourcesHelper.ToJSON(resMng)">
+
+    <h1 id="AutorName" class="col-xs-12 text-center"
+        ng-bind="resources.Name"></h1>
+
+    <h2 ng-bind="something"></h2>
+
+</div>

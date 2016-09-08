@@ -1,23 +1,25 @@
-﻿(function ($, angular) {
-
-    angular.module("app")
+﻿define(['app'], function (app) {
+    app
     .controller("AppCtrl", ["$scope", "$rootScope", function ($scope, $rootScope) {
 
-        $rootScope.appRoot = "/"
+        $rootScope.AppRoot = "/"
 
-        $rootScope.technologyProvided = "";
-        $rootScope.appName = "";
-        $rootScope.autor = "";
+        $rootScope.TechnologyProvided = "";
+        $rootScope.AppName = "";
+        $rootScope.Autor = "";
 
-        $rootScope.footer = $rootScope.technologyProvided + " - " + $rootScope.appName;
+        $rootScope.Footer = $rootScope.TechnologyProvided + " - " + $rootScope.AppName;
 
-        $scope.$watch("[$root.technologyProvided, $root.appName, $root.autor]", function () {
-            $rootScope.footer =
-                $rootScope.technologyProvided + " - " +
-                $rootScope.appName + " - " +
-                $rootScope.autor;
+        // Asignacion de resources
+        $scope.$watch("resources", function () {
+            $rootScope.TechnologyProvided = $scope.resources.TechnologyProvided;
+            $rootScope.AppName = $scope.resources.AppName;
+            $rootScope.Autor = $scope.resources.Autor;
+            $rootScope.Footer =
+                $rootScope.TechnologyProvided + " - " +
+                $rootScope.AppName + " - " +
+                $rootScope.Autor;
         });
 
     }]);
-
-})(jQuery, angular);
+});

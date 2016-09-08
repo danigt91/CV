@@ -195,6 +195,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\LocalizationHelper.cs" />
+    <Compile Include="Helpers\ResourcesHelper.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\App\EnlaceViewModel.cs" />
@@ -205,6 +207,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Home\Index.css" />
     <Content Include="Content\lib\bootstrap\bootstrap-theme.css" />
     <Content Include="Content\lib\bootstrap\bootstrap-theme.min.css" />
     <Content Include="Content\lib\bootstrap\bootstrap.css" />
@@ -216,11 +219,15 @@
     <Content Include="Content\lib\bootstrap\bootstrap.css.map" />
     <Content Include="Content\lib\bootstrap\bootstrap-theme.min.css.map" />
     <Content Include="Content\lib\bootstrap\bootstrap-theme.css.map" />
-    <Content Include="Resources\Zhyra HeadShot.mp4" />
+    <Content Include="Scripts\controllers\Home\VideoCtrl.js" />
+    <Content Include="Scripts\libs\angular-ui-router\angular-ui-router.js" />
+    <Content Include="Scripts\libs\angular-ui-router\angular-ui-router.min.js" />
     <Content Include="Scripts\app.js" />
     <Content Include="Scripts\controllers\App\AppCtrl.js" />
     <Content Include="Scripts\controllers\Home\HomeCtrl.js" />
     <Content Include="Scripts\controllers\Menu\MenuPublicCtrl.js" />
+    <Content Include="Scripts\libs\angularAMD\angularAMD.min.js" />
+    <Content Include="Scripts\libs\angularAMD\ngload.min.js" />
     <Content Include="Scripts\libs\angular\angular-animate.js" />
     <Content Include="Scripts\libs\angular\angular-animate.min.js" />
     <Content Include="Scripts\libs\angular\angular-aria.js" />
@@ -265,6 +272,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Areas\Blogs\Views\web.config" />
+    <Content Include="Scripts\libs\angularAMD\angularAMD.min.map" />
+    <Content Include="Scripts\libs\angularAMD\ngload.min.map" />
     <None Include="Scripts\libs\jquery\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\libs\angular\i18n\angular-locale_aa-dj.js" />
     <Content Include="Scripts\libs\angular\i18n\angular-locale_aa-er.js" />
@@ -1023,6 +1032,9 @@
     <Content Include="Scripts\libs\modernizr\modernizr-2.8.3.js" />
     <Content Include="Scripts\libs\respond\respond.js" />
     <Content Include="Scripts\libs\respond\respond.min.js" />
+    <Content Include="Scripts\main.js" />
+    <Content Include="Scripts\libs\requireJS\r.js" />
+    <Content Include="Scripts\libs\requireJS\require.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -1039,14 +1051,15 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Scripts\libs\angular\version.json" />
     <Content Include="Views\Video\Index.cshtml" />
-    <Content Include="Views\Shared\_MenuPublic.cshtml" />
+    <Content Include="Views\App\_MenuPublic.cshtml" />
+    <Content Include="Views\Home\_Home.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Blogs\Controllers\" />
     <Folder Include="Areas\Blogs\Models\" />
     <Folder Include="Areas\Blogs\Views\Shared\" />
-    <Folder Include="Views\App\" />
+    <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

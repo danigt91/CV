@@ -11,7 +11,7 @@ namespace CV.Controllers
         // GET: Video
         public ActionResult Index()
         {
-            return View();
+            return PartialView();
         }
     }
 }

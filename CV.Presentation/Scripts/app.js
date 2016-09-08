@@ -1,5 +1,49 @@
-﻿(function ($, angular) {
+﻿define(['angularAMD', 'ui.router'], function (angularAMD) {
+    
+    var app = angular.module("app", ["ui.router"]);
 
-    angular.module("app", []);
+    app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
 
-})(jQuery, angular);
+        $stateProvider
+            .state('home', {
+                abstract: true,
+                views: {
+                    'menu': angularAMD.route({
+                        templateUrl: 'App/MenuPublico',
+                        controllerUrl: 'controllers/Menu/MenuPublicCtrl'
+                    }),
+                    'content': angularAMD.route({
+                        templateUrl: 'Home/Home',
+                        controllerUrl: 'controllers/Home/HomeCtrl'
+                    })
+                }
+            })
+            .state('video', {
+                abstract: true,
+                views: {
+                    'menu': angularAMD.route({
+                        templateUrl: 'App/MenuPublico',
+                        controllerUrl: 'controllers/Menu/MenuPublicCtrl'
+                    }),
+                    'content': angularAMD.route({
+                        templateUrl: 'Video/Index',
+                        controllerUrl: 'controllers/Home/VideoCtrl'
+                    })
+                }
+            })
+            .state('home.index', angularAMD.route({
+                url: '/home'
+            }))
+            .state('video.index', angularAMD.route({
+                url: '/video'
+            }))
+        ;
+
+        // Else
+        $urlRouterProvider
+        .otherwise('/home');
+    }]);
+
+    //return angularAMD.bootstrap(app);
+    return app;
+});
