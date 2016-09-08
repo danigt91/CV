@@ -1,11 +1,11 @@
 ﻿#AutorName{
     padding: 5px;
-    border: 3px dotted black;
-    border-radius: 5px;
-    -webkit-transform: rotate3d(0.1, 1, -0.1, 45deg);
-    -webkit-transition: 2s all;
+    /*border: 1px dotted black;*/
+    /*border-radius: 5px;*/
+    /*-webkit-transform: rotate3d(-0.1, 1, 0, 45deg);*/
+    /*-webkit-transition: 2s all;*/
 }
 
 #AutorName:hover{
-    -webkit-transform: rotate3d(1, 1, 1, 0deg);
+    /*-webkit-transform: rotate3d(1, 1, 1, 0deg);*/
 }

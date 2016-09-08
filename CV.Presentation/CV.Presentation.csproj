@@ -219,6 +219,7 @@
     <Content Include="Content\lib\bootstrap\bootstrap.css.map" />
     <Content Include="Content\lib\bootstrap\bootstrap-theme.min.css.map" />
     <Content Include="Content\lib\bootstrap\bootstrap-theme.css.map" />
+    <Content Include="Scripts\common.js" />
     <Content Include="Scripts\controllers\Home\VideoCtrl.js" />
     <Content Include="Scripts\libs\angular-ui-router\angular-ui-router.js" />
     <Content Include="Scripts\libs\angular-ui-router\angular-ui-router.min.js" />

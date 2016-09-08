@@ -1,4 +1,4 @@
-﻿define(['angularAMD', 'ui.router'], function (angularAMD) {
+﻿define(['angularAMD', 'ui.router', 'common'], function (angularAMD) {
     
     var app = angular.module("app", ["ui.router"]);
 
@@ -26,7 +26,7 @@
                         controllerUrl: 'controllers/Menu/MenuPublicCtrl'
                     }),
                     'content': angularAMD.route({
-                        templateUrl: 'Video/Index',
+                        templateUrl: 'Video/Index,'
                         controllerUrl: 'controllers/Home/VideoCtrl'
                     })
                 }

@@ -2,8 +2,8 @@
     baseUrl: "/Scripts",
     paths: {
         'jquery': 'libs/jquery/jquery-2.2.0.min',
-        'bootstrap': 'libs/bootstrap/bootstrap',
-        'respond': 'libs/respond/respond.js',
+        'bootstrap': 'libs/bootstrap/bootstrap.min',
+        'respond': 'libs/respond/respond',
         'angular': 'libs/angular/angular',
         'angularAMD': 'libs/angularAMD/angularAMD.min',
         'ngload': 'libs/angularAMD/ngload.min',
