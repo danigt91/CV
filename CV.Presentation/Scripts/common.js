@@ -1,3 +1,3 @@
-﻿define(['jquery', 'bootstrap', 'respond'], function (angularAMD) {
+﻿define(['jquery', 'bootstrap', 'respond'], function ($, bootstrap, respond) {
     
 });
