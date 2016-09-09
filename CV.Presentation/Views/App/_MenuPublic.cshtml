@@ -1,9 +1,6 @@
 ﻿@using CV.Models.App
 @using CV.Presentation.Helpers
 @model List<EnlaceViewModel>
-@{
-    LocalizationHelper.SetLocalization(ViewContext);
-}
 
 <div class="navbar navbar-inverse navbar-fixed-top" ng-init="enlaces = @Json.Encode(Model)">
     <div class="container">

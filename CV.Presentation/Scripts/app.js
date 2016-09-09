@@ -26,7 +26,7 @@
                         controllerUrl: 'controllers/Menu/MenuPublicCtrl'
                     }),
                     'content': angularAMD.route({
-                        templateUrl: 'Video/Index,'
+                        templateUrl: 'Video/Index,',
                         controllerUrl: 'controllers/Home/VideoCtrl'
                     })
                 }

@@ -16,14 +16,14 @@ namespace CV
             routes.MapRoute(
                 name: "DefaultCultured",
                 url: "{culture}/{controller}/{action}/{id}",
-                defaults: new { culture = "en-US", controller = "Home", action = "Index", id = UrlParameter.Optional },
+                defaults: new { culture = "en", controller = "Home", action = "Index", id = UrlParameter.Optional },
                 constraints: new { culture = "([a-z]{2})" }
             );
 
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { culture = "en-US", controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { culture = "en", controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
 
         }
