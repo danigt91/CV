@@ -27,6 +27,13 @@ namespace CV.Infraestructure.Tests.Repository
         }
 
         [TestMethod]
+        public void GenerateContext()
+        {
+            DependencyResolverService.Register();
+            _usuario = DependencyResolverService.ResolveCustomType<IDataRepository<Usuario>>();
+        }
+
+        [TestMethod]
         public void InjectionIsOK()
         {
             var x = _usuario.All().Count();
