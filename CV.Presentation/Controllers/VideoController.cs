@@ -6,7 +6,6 @@ using System.Web.Mvc;
 
 namespace CV.Controllers
 {
-    [Authorize]
     public class VideoController : Controller
     {
         // GET: Video

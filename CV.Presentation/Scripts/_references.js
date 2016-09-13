@@ -1,7 +1,5 @@
 ﻿/// <autosync enabled="true" />
 /// <reference path="app.js" />
-/// <reference path="common.js" />
-/// <reference path="controllers/account/accountctrl.js" />
 /// <reference path="controllers/app/appctrl.js" />
 /// <reference path="controllers/home/homectrl.js" />
 /// <reference path="controllers/home/videoctrl.js" />
