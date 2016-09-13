@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
@@ -9,16 +8,18 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
-using CV.Models;
+using CV.CrossCutting.Service;
 
 namespace CV.Providers
 {
     public class ApplicationOAuthProvider : OAuthAuthorizationServerProvider
     {
         private readonly string _publicClientId;
+        private UserService _identityService;
 
-        public ApplicationOAuthProvider(string publicClientId)
+        public ApplicationOAuthProvider(UserService identityService, string publicClientId)
         {
+            _identityService = identityService;
             if (publicClientId == null)
             {
                 throw new ArgumentNullException("publicClientId");
@@ -29,9 +30,9 @@ namespace CV.Providers
 
         public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
         {
-            var userManager = context.OwinContext.GetUserManager<ApplicationUserManager>();
+            var userManager = context.OwinContext.GetUserManager<UserManager<IdentityUser>>();
 
-            ApplicationUser user = await userManager.FindAsync(context.UserName, context.Password);
+            IdentityUser user = await userManager.FindAsync(context.UserName, context.Password);
 
             if (user == null)
             {
@@ -39,9 +40,9 @@ namespace CV.Providers
                 return;
             }
 
-            ClaimsIdentity oAuthIdentity = await user.GenerateUserIdentityAsync(userManager,
-               OAuthDefaults.AuthenticationType);
-            ClaimsIdentity cookiesIdentity = await user.GenerateUserIdentityAsync(userManager,
+            ClaimsIdentity oAuthIdentity = await _identityService.GenerateUserIdentityAsync(user, 
+                OAuthDefaults.AuthenticationType);
+            ClaimsIdentity cookiesIdentity = await _identityService.GenerateUserIdentityAsync(user, 
                 CookieAuthenticationDefaults.AuthenticationType);
 
             AuthenticationProperties properties = CreateProperties(user.UserName);

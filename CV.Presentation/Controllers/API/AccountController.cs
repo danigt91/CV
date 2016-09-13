@@ -16,6 +16,8 @@ using Microsoft.Owin.Security.OAuth;
 using CV.Models;
 using CV.Providers;
 using CV.Results;
+using CV.CrossCutting.Service;
+using System.Net;
 
 namespace CV.Controllers
 {
@@ -24,29 +26,92 @@ namespace CV.Controllers
     public class AccountController : ApiController
     {
         private const string LocalLoginProvider = "Local";
-        private ApplicationUserManager _userManager;
+        private UserService _userService;
+        private SignInService _signInService;
 
-        public AccountController()
-        {
-        }
-
-        public AccountController(ApplicationUserManager userManager,
+        public AccountController(UserService identityService,
             ISecureDataFormat<AuthenticationTicket> accessTokenFormat)
         {
-            UserManager = userManager;
+            _userService = identityService;
             AccessTokenFormat = accessTokenFormat;
         }
 
-        public ApplicationUserManager UserManager
+        public UserManager<IdentityUser> UserManager
         {
             get
             {
-                return _userManager ?? Request.GetOwinContext().GetUserManager<ApplicationUserManager>();
+                return _userService.GetUserManager();
             }
-            private set
+        }
+
+        public SignInManager<IdentityUser, string> SignInManager
+        {
+            get
             {
-                _userManager = value;
+                return _signInService.GetSignInManager();
             }
+        }
+        
+        [AllowAnonymous]
+        [Route("Login")]
+        public async Task<IHttpActionResult> Login(LoginViewModel model, string returnUrl = null)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            //var user = await UserManager.FindAsync(model.Email, model.Password);
+            
+            // This doesn't count login failures towards account lockout
+            // To enable password failures to trigger account lockout, change to shouldLockout: true
+            var result = await _signInService.LoginUserAsync(model.Email, model.Password, model.RememberMe);
+            switch (result)
+            {
+                case SignInStatus.Success:
+                    return Ok(new { url = returnUrl??"home.index" });
+                case SignInStatus.LockedOut:
+                    return this.StatusCode(HttpStatusCode.Forbidden);
+                case SignInStatus.RequiresVerification:
+                    return this.StatusCode(HttpStatusCode.Unauthorized);
+                case SignInStatus.Failure:
+                default:
+                    return BadRequest();
+            }
+        }
+
+        // POST api/Account/Register
+        [AllowAnonymous]
+        [Route("Register")]
+        public async Task<IHttpActionResult> Register(RegisterBindingModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var user = new IdentityUser() { UserName = model.Email, Email = model.Email };
+
+            //IdentityResult result = await UserManager.CreateAsync(user, model.Password);
+            var result = await _userService.CreateUserAsync(user, model.Password);
+
+            if (!result.Succeeded)
+            {
+                return BadRequest();
+            }
+            else
+            {
+                var loginResult = await _signInService.LoginUserAsync(model.Email, model.Password, false);
+                if(loginResult == SignInStatus.Success)
+                {
+                    return Ok();
+                }else
+                {
+                    return StatusCode(HttpStatusCode.Unauthorized);
+                }
+            }
+
+            //return Ok();
         }
 
         public ISecureDataFormat<AuthenticationTicket> AccessTokenFormat { get; private set; }
@@ -250,7 +315,7 @@ namespace CV.Controllers
                 return new ChallengeResult(provider, this);
             }
 
-            ApplicationUser user = await UserManager.FindAsync(new UserLoginInfo(externalLogin.LoginProvider,
+            IdentityUser user = await UserManager.FindAsync(new UserLoginInfo(externalLogin.LoginProvider,
                 externalLogin.ProviderKey));
 
             bool hasRegistered = user != null;
@@ -259,10 +324,8 @@ namespace CV.Controllers
             {
                 Authentication.SignOut(DefaultAuthenticationTypes.ExternalCookie);
                 
-                 ClaimsIdentity oAuthIdentity = await user.GenerateUserIdentityAsync(UserManager,
-                    OAuthDefaults.AuthenticationType);
-                ClaimsIdentity cookieIdentity = await user.GenerateUserIdentityAsync(UserManager,
-                    CookieAuthenticationDefaults.AuthenticationType);
+                 ClaimsIdentity oAuthIdentity = await _userService.GenerateUserIdentityAsync(user, OAuthDefaults.AuthenticationType);
+                ClaimsIdentity cookieIdentity = await _userService.GenerateUserIdentityAsync(user, CookieAuthenticationDefaults.AuthenticationType);
 
                 AuthenticationProperties properties = ApplicationOAuthProvider.CreateProperties(user.UserName);
                 Authentication.SignIn(properties, oAuthIdentity, cookieIdentity);
@@ -318,28 +381,6 @@ namespace CV.Controllers
             return logins;
         }
 
-        // POST api/Account/Register
-        [AllowAnonymous]
-        [Route("Register")]
-        public async Task<IHttpActionResult> Register(RegisterBindingModel model)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
-
-            IdentityResult result = await UserManager.CreateAsync(user, model.Password);
-
-            if (!result.Succeeded)
-            {
-                return GetErrorResult(result);
-            }
-
-            return Ok();
-        }
-
         // POST api/Account/RegisterExternal
         [OverrideAuthentication]
         [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
@@ -357,7 +398,7 @@ namespace CV.Controllers
                 return InternalServerError();
             }
 
-            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
+            var user = new IdentityUser() { UserName = model.Email, Email = model.Email };
 
             IdentityResult result = await UserManager.CreateAsync(user);
             if (!result.Succeeded)
@@ -375,10 +416,9 @@ namespace CV.Controllers
 
         protected override void Dispose(bool disposing)
         {
-            if (disposing && _userManager != null)
+            if (disposing && _userService != null)
             {
-                _userManager.Dispose();
-                _userManager = null;
+                _userService = null;
             }
 
             base.Dispose(disposing);

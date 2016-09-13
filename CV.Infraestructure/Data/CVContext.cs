@@ -6,12 +6,17 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace CV.Infraestructure.Data
 {
-    public class CVContext : IdentityDbContext, IContext, IDisposable
+    public class CVContext : IdentityDbContext<IdentityUser>, IContext, IDisposable
     {
 
-        public CVContext() : base("CVEntity")
+        public CVContext() : base("name=DefaultConnection", throwIfV1Schema: false)
         {
 
+        }
+
+        public static IdentityDbContext<IdentityUser> Create()
+        {
+            return new CVContext();
         }
 
         public DbSet<Usuario> Usuarios { get; set; }
