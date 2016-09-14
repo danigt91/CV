@@ -182,12 +182,12 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
-    <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Blogs\BlogsAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\_AccountController.cs" />
     <Compile Include="Controllers\AppController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
@@ -197,12 +197,10 @@
     </Compile>
     <Compile Include="Helpers\LocalizationHelper.cs" />
     <Compile Include="Helpers\ResourcesHelper.cs" />
-    <Compile Include="Models\AccountBindingModels.cs" />
-    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Account\AccountBindingModels.cs" />
+    <Compile Include="Models\Account\AccountViewModels.cs" />
     <Compile Include="Models\App\EnlaceViewModel.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Engines\MyRazorView.cs" />
     <Compile Include="Engines\MyRazorViewEngine.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
@@ -1056,12 +1054,15 @@
     <Content Include="Views\Video\Index.cshtml" />
     <Content Include="Views\App\_MenuPublic.cshtml" />
     <Content Include="Views\Home\_Home.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Blogs\Controllers\" />
     <Folder Include="Areas\Blogs\Models\" />
     <Folder Include="Areas\Blogs\Views\Shared\" />
+    <Folder Include="Providers\" />
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>

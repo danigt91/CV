@@ -69,6 +69,7 @@
     <Compile Include="Data\Entity\Contract\EntityBase.cs" />
     <Compile Include="Data\Entity\Contract\IIdentificable.cs" />
     <Compile Include="Data\Entity\Contract\IObjectWithState.cs" />
+    <Compile Include="Data\Entity\ApplicationUser.cs" />
     <Compile Include="Data\Entity\Usuario.cs" />
     <Compile Include="Data\Repository\Contract\IDataRepository.cs" />
     <Compile Include="Data\Repository\Contract\IUnitOfWork.cs" />

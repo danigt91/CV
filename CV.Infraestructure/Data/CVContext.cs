@@ -6,15 +6,20 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace CV.Infraestructure.Data
 {
-    public class CVContext : IdentityDbContext, IContext, IDisposable
+    public class CVContext : IdentityDbContext<IdentityUser>, IContext, IDisposable
     {
 
-        public CVContext() : base("CVEntity")
+        public CVContext() : base("name=CVEntity")
         {
 
         }
 
         public DbSet<Usuario> Usuarios { get; set; }
+
+        public static CVContext Create()
+        {
+            return new CVContext();
+        }
 
     }
 }
