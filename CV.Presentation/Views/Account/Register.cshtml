@@ -1,1 +1,20 @@
-﻿
+﻿@using CV.Models
+@model RegisterBindingModel
+
+<span>Register</span>
+<div class="row">
+
+    <div class="col-xs-10 col-xs-offset-2 col-md-4 col-md-offset-1">
+
+        <div class="row">
+
+            @Html.TextBoxFor(m => m.Email, new { @class="col-xs-12", @placeholder= @Html.DisplayNameFor(n => n.Email) })
+            @Html.ValidationMessageFor(m => m.Email)
+
+        </div>
+
+    </div>
+
+    <div class="col-xs-10 col-xs-offset-2 col-md-4 col-md-offset-1"></div>
+
+</div>

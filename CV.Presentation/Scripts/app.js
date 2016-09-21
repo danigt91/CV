@@ -18,6 +18,9 @@
                     })
                 }
             })
+            .state('home.index', angularAMD.route({
+                url: '/home'
+            }))
             .state('video', {
                 abstract: true,
                 views: {
@@ -31,11 +34,31 @@
                     })
                 }
             })
-            .state('home.index', angularAMD.route({
-                url: '/home'
-            }))
             .state('video.index', angularAMD.route({
                 url: '/video'
+            }))
+            .state('account', {
+                abstract: true,
+                views: {
+                    'menu': angularAMD.route({
+                        templateUrl: 'App/MenuPublico',
+                        controllerUrl: 'controllers/Menu/MenuPublicCtrl'
+                    }),
+                    'content': angularAMD.route({
+                        templateUrl: 'Account/Index',
+                        controllerUrl: 'controllers/Account/AccountCtrl'
+                    })
+                }
+            })
+            .state('account.login', angularAMD.route({
+                url: '/login',
+                templateUrl: 'Account/Login',
+                controllerUrl: 'controllers/Account/AccountLoginCtrl'
+            }))
+            .state('account.register', angularAMD.route({
+                url: '/register',
+                templateUrl: 'Account/Register',
+                controllerUrl: 'controllers/Account/AccountRegisterCtrl'
             }))
         ;
 

@@ -37,19 +37,24 @@ namespace CV.Presentation.Controllers
             {
                 _userManager = value;
             }
-        }        
-        
-        
+        }
+
+        [AllowAnonymous]
+        public ActionResult Index()
+        {
+            return PartialView();
+        }
+
         [AllowAnonymous]
         public ActionResult Login()
         {
-            return View();
+            return PartialView();
         }
 
         [AllowAnonymous]
         public ActionResult Register()
         {            
-            return View();
+            return PartialView();
         }
 
 

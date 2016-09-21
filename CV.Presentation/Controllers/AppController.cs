@@ -26,6 +26,18 @@ namespace CV.Controllers
                 Url = "video.index",
                 Texto = "Video Streamming"
             });
+            enlaces.Add(new EnlaceViewModel()
+            {
+                //Url = URLDecode("Index", "Video", new { area = "" }),
+                Url = "account.login",
+                Texto = "Login"
+            });
+            enlaces.Add(new EnlaceViewModel()
+            {
+                //Url = URLDecode("Index", "Video", new { area = "" }),
+                Url = "account.register",
+                Texto = "Register"
+            });
 
             return PartialView("_MenuPublic", enlaces);
         }
