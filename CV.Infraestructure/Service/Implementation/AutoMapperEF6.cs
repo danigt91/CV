@@ -5,10 +5,11 @@ using System.Linq;
 using CV.Infraestructure.Data.Entity.Contract;
 using CV.Infraestructure.Data.Repository;
 using CV.Infraestructure.Service.Contract;
+using System.Linq.Expressions;
 
 namespace CV.Infraestructure.Service.Implementation
 {
-    public class AutoMapperEF6<T, V> : IAutoMapperEF6<T, V> where T : EntityBase
+    public class AutoMapperEF6<T, V> : IAutoMapperEF6<T, V>, IFilterable<T, V> where T : EntityBase where V: class
     {
         
         static MapperConfiguration Config = new MapperConfiguration(cfg =>
@@ -23,6 +24,21 @@ namespace CV.Infraestructure.Service.Implementation
         public V Map(T entity)
         {
             return new T[] { entity }.AsQueryable().ProjectToFirst<V>(Config);
+        }
+
+        public IEnumerable<V> ByExpression(IQueryable<T> entities, Expression<Func<V, bool>> expression)
+        {
+            return entities
+                .ProjectToQueryable<V>(Config)
+                .Where(expression)
+                .ToList();
+        }
+
+        public IEnumerable<V> ByExpressions(IQueryable<T> entities, IList<Expression<Func<V, bool>>> expressions)
+        {
+            var query = entities.ProjectToQueryable<V>(Config);
+            expressions.ToList().ForEach(expression => query = query.Where(expression));
+            return query.ToList();
         }
     }
 }

@@ -152,5 +152,15 @@ namespace CV.Infraestructure.Tests.Repository
                 throw new UnauthorizedAccessException("User dont exist or password dont match.");
             }            
         }
+
+        [TestMethod]
+        public void GetUserByExpressionOK()
+        {
+            var usuarios = _usuario.All();
+            var auto = new AutoMapperEF6<Usuario, UsuarioDTOTest>();
+            var xMap = auto.ByExpression(usuarios, expression => expression.UserName == "danigt91");
+
+            Trace.WriteLine("Get User By Expression OK ok");
+        }
     }
 }

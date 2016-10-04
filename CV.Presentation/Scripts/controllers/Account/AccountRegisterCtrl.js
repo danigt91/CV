@@ -3,7 +3,8 @@
 
         $scope.resources = {};
 
-
+        $scope.user = {
+        }
 
     };
 });

@@ -8,8 +8,15 @@
 
         <div class="row">
 
-            @Html.TextBoxFor(m => m.Email, new { @class="col-xs-12", @placeholder= @Html.DisplayNameFor(n => n.Email) })
+            @Html.TextBoxFor(m => m.Email, new { @class="col-xs-12", @placeholder= @Html.DisplayNameFor(n => n.Email), @data_ng_bind="user.email" })
             @Html.ValidationMessageFor(m => m.Email)
+
+        </div>
+
+        <div class="row">
+
+            @Html.PasswordFor(m => m.Password, new { @class = "col-xs-12", @placeholder = @Html.DisplayNameFor(n => n.Password), @data_ng_bind = "user.password" })
+            @Html.ValidationMessageFor(m => m.Password)
 
         </div>
 

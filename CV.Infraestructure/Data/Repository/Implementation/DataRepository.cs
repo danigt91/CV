@@ -7,7 +7,7 @@ using CV.Infraestructure.Data.Repository.Contract;
 
 namespace CV.Infraestructure.Data.Repository.Implementation
 {
-    public sealed class DataRepository<TEntity> : IDataRepository<TEntity> where TEntity : EntityBase
+    public class DataRepository<TEntity> : IDataRepository<TEntity> where TEntity : EntityBase
     {
         private IUnitOfWork<IContext> _context
         {
