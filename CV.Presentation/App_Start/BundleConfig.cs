@@ -8,6 +8,8 @@ namespace CV
         // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
+            bundles.IgnoreList.Clear();
+
             /*bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/libs/jquery/jquery-{version}.js"));*/
 
@@ -22,8 +24,11 @@ namespace CV
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/lib/bootstrap/bootstrap.css",
-                      "~/Content/site.css"));
-
+                      "~/Content/lib/kendo/2016.3.914/kendo.common.min.css",
+                      "~/Content/lib/kendo/2016.3.914/kendo.metro.min.css",
+                      "~/Content/site.css"
+                      ));
+            
             /*bundles.Add(new ScriptBundle("~/bundles/angular").Include(
                 "~/Scripts/libs/angular/angular.js",
                 "~/Scripts/libs/angular-ui-router/angular-ui-router.js"

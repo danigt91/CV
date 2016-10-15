@@ -38,6 +38,12 @@ namespace CV.Controllers
                 Url = "account.register",
                 Texto = "Register"
             });
+            enlaces.Add(new EnlaceViewModel()
+            {
+                //Url = URLDecode("Index", "Video", new { area = "" }),
+                Url = "pruebas.index",
+                Texto = "Pruebas"
+            });
 
             return PartialView("_MenuPublic", enlaces);
         }

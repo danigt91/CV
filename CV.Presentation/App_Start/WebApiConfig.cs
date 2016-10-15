@@ -4,7 +4,8 @@ using System.Linq;
 using System.Net.Http;
 using System.Web.Http;
 using Microsoft.Owin.Security.OAuth;
-using Newtonsoft.Json.Serialization;
+using System.Web.Http.OData.Builder;
+using CV.Presentation.Models.Pruebas;
 
 namespace CV
 {
@@ -25,6 +26,14 @@ namespace CV
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+
+
+            // New code:
+            ODataConventionModelBuilder builder = new ODataConventionModelBuilder();
+            builder.EntitySet<GridItemViewModel>("GridItemViewModels");
+            config.Routes.MapODataRoute("odata", "odata", builder.GetEdmModel());
+
         }
     }
 }

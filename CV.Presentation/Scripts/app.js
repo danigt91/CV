@@ -1,6 +1,6 @@
-﻿define(['angularAMD', 'ui.router', 'common'], function (angularAMD) {
-    
-    var app = angular.module("app", ["ui.router"]);
+﻿define(['angularAMD', 'ui.router', 'common', "kendo.all.min"], function (angularAMD, uiRouter, common) {
+
+    var app = angular.module("app", ["ui.router", "kendo.directives"]);
 
     app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
 
@@ -59,6 +59,29 @@
                 url: '/register',
                 templateUrl: 'Account/Register',
                 controllerUrl: 'controllers/Account/AccountRegisterCtrl'
+            }))
+
+            .state('pruebas', {
+                abstract: true,
+                views: {
+                    'menu': angularAMD.route({
+                        templateUrl: 'App/MenuPublico',
+                        controllerUrl: 'controllers/Menu/MenuPublicCtrl'
+                    }),
+                    'content': angularAMD.route({
+                        templateUrl: 'Pruebas/Index',
+                        controllerUrl: 'controllers/Pruebas/PruebasCtrl'
+                    })
+                }
+            })
+            .state('pruebas.index', angularAMD.route({
+                url: '/pruebas',
+                views: {
+                    'grid': angularAMD.route({
+                        templateUrl: 'Pruebas/Grid',
+                        controllerUrl: 'controllers/Pruebas/GridCtrl'
+                    })
+                }
             }))
         ;
 
