@@ -9,6 +9,8 @@ using CV.Infraestructure.Data.Repository.Implementation;
 using Microsoft.AspNet.Identity.EntityFramework;
 using CV.CrossCutting.Identity;
 using Microsoft.AspNet.Identity;
+using CV.Infraestructure.Service.Contract;
+using CV.Infraestructure.Service.Implementation;
 
 namespace CV.CrossCutting.IoC
 {
@@ -34,10 +36,11 @@ namespace CV.CrossCutting.IoC
 
             /* Arquitectura */
             this.RegisterType<IContext, CVContext>();
-            this.RegisterType<IUnitOfWork<IContext>, UnitOfWork>();
+            this.RegisterType<IUnitOfWork<IContext>, UnitOfWork>();            
 
             /* Repositorio de entidades */
             this.RegisterType(typeof(IDataRepository<>), typeof(DataRepository<>));
+            this.RegisterType(typeof(IAutoMapperEF6<,>), typeof(AutoMapperEF6<,>));
         }
 
     }

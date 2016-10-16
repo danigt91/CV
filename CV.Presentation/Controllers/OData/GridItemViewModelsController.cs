@@ -74,6 +74,28 @@ namespace CV.Presentation.Controllers.OData
             return Ok<IEnumerable<GridItemViewModel>>(result);
         }
 
+
+        // GET: odata/GridItemViewModels
+        public IHttpActionResult GetGridItemViewModelsDTO(ODataQueryOptions<GridItemViewModel> queryOptions)
+        {
+            // validate the query.
+            try
+            {
+                queryOptions.Validate(_validationSettings);
+            }
+            catch (ODataException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+            // return Ok<IEnumerable<GridItemViewModel>>(gridItemViewModels);
+            //return StatusCode(HttpStatusCode.NotImplemented);
+
+            var result = queryOptions.ApplyTo(items.AsQueryable()) as IQueryable<GridItemViewModel>;
+
+            return Ok<IEnumerable<GridItemViewModel>>(result);
+        }
+
         /*
         [EnableQuery]
         public IQueryable<GridItemViewModel> Get()

@@ -31,14 +31,15 @@ namespace CV.Infraestructure.Service.Implementation
             return entities
                 .ProjectToQueryable<V>(Config)
                 .Where(expression)
-                .ToList();
+                .AsEnumerable();
         }
 
         public IEnumerable<V> ByExpressions(IQueryable<T> entities, IList<Expression<Func<V, bool>>> expressions)
         {
             var query = entities.ProjectToQueryable<V>(Config);
             expressions.ToList().ForEach(expression => query = query.Where(expression));
-            return query.ToList();
+            return query.AsEnumerable();
         }
+        
     }
 }

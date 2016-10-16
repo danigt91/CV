@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CV.Infraestructure.Data.Entity.Contract;
+using System.Linq.Expressions;
 
 namespace CV.Infraestructure.Service.Contract
 {
@@ -15,6 +16,9 @@ namespace CV.Infraestructure.Service.Contract
 
         IEnumerable<V> Map(IQueryable<T> entity);
 
+        IEnumerable<V> ByExpression(IQueryable<T> entities, Expression<Func<V, bool>> expression);
+
+        IEnumerable<V> ByExpressions(IQueryable<T> entities, IList<Expression<Func<V, bool>>> expressions);
 
     }
 }
