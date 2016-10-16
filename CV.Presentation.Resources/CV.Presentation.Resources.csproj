@@ -39,13 +39,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Account\Register.es.resx" />
+    <EmbeddedResource Include="Account\Register.es-ES.resx" />
     <EmbeddedResource Include="Account\Register.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Register.Designer.cs</LastGenOutput>
       <CustomToolNamespace>CV.Presentation.Resources.Account</CustomToolNamespace>
     </EmbeddedResource>
-    <EmbeddedResource Include="Home\Index.es.resx" />
+    <EmbeddedResource Include="Home\Index.es-ES.resx" />
     <EmbeddedResource Include="Home\Index.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Index.Designer.cs</LastGenOutput>

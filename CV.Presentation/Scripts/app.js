@@ -1,4 +1,6 @@
-﻿define(['angularAMD', 'ui.router', 'common', "kendo.all.min"], function (angularAMD, uiRouter, common) {
+﻿define(['angularAMD', 'ui.router', 'common', "kendo.all.min", "kendo-culture", "kendo-messages"], function (angularAMD, uiRouter, common, kendo, kendoCulture, kendoMessages) {
+
+    kendo.culture(document.culture);
 
     var app = angular.module("app", ["ui.router", "kendo.directives"]);
 
