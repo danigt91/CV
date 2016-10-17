@@ -8,9 +8,10 @@ namespace CV.CrossCutting.Service
 
         static UnityContainer _container;
 
-        public static void Register()
+        public static UnityContainer Register()
         {
             _container = new PrincipalContainer();
+            return _container;
         }
 
         public static I ResolveCustomType<I>()

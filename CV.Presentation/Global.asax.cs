@@ -11,10 +11,7 @@ namespace CV
     {
         protected void Application_Start()
         {
-
-            // Unity Injection
-            DependencyResolverService.Register();
-
+            
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

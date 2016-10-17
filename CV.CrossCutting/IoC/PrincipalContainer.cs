@@ -11,6 +11,8 @@ using CV.CrossCutting.Identity;
 using Microsoft.AspNet.Identity;
 using CV.Infraestructure.Service.Contract;
 using CV.Infraestructure.Service.Implementation;
+using CV.Domain.Service.Contract;
+using CV.Domain.Service.Implementation;
 
 namespace CV.CrossCutting.IoC
 {
@@ -41,6 +43,9 @@ namespace CV.CrossCutting.IoC
             /* Repositorio de entidades */
             this.RegisterType(typeof(IDataRepository<>), typeof(DataRepository<>));
             this.RegisterType(typeof(IAutoMapperEF6<,>), typeof(AutoMapperEF6<,>));
+
+            /* Repository de servicios */
+            this.RegisterType<IUsuarioService, UsuarioService>();
         }
 
     }

@@ -26,6 +26,12 @@ namespace CV.Infraestructure.Service.Implementation
             return new T[] { entity }.AsQueryable().ProjectToFirst<V>(Config);
         }
 
+        public IQueryable<V> ProjectIQueryable(IQueryable<T> entities)
+        {
+            return entities
+                .ProjectToQueryable<V>(Config);
+        }
+
         public IEnumerable<V> ByExpression(IQueryable<T> entities, Expression<Func<V, bool>> expression)
         {
             return entities

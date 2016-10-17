@@ -6,6 +6,7 @@ using System.Web.Http;
 using Microsoft.Owin.Security.OAuth;
 using System.Web.Http.OData.Builder;
 using CV.Presentation.Models.Pruebas;
+using CV.Domain.DTO;
 
 namespace CV
 {
@@ -31,7 +32,7 @@ namespace CV
 
             // New code:
             ODataConventionModelBuilder builder = new ODataConventionModelBuilder();
-            builder.EntitySet<GridItemViewModel>("GridItemViewModels");
+            builder.EntitySet<UsuarioDTO>("GridItemViewModels");
             config.Routes.MapODataRoute("odata", "odata", builder.GetEdmModel());
 
         }

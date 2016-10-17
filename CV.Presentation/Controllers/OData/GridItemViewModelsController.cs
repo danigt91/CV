@@ -11,6 +11,8 @@ using System.Web.Http.OData.Query;
 using System.Web.Http.OData.Routing;
 using CV.Presentation.Models.Pruebas;
 using Microsoft.Data.OData;
+using CV.Domain.Service.Contract;
+using CV.Domain.DTO;
 
 namespace CV.Presentation.Controllers.OData
 {
@@ -26,6 +28,13 @@ namespace CV.Presentation.Controllers.OData
     */
     public class GridItemViewModelsController : ODataController
     {
+
+        private IUsuarioService _usuarios;
+
+        public GridItemViewModelsController(IUsuarioService usuarios)
+        {
+            _usuarios = usuarios;
+        }
 
         private static List<GridItemViewModel> _items;
         private static List<GridItemViewModel> items {
@@ -54,7 +63,7 @@ namespace CV.Presentation.Controllers.OData
         private static ODataValidationSettings _validationSettings = new ODataValidationSettings();
 
         // GET: odata/GridItemViewModels
-        public IHttpActionResult GetGridItemViewModels(ODataQueryOptions<GridItemViewModel> queryOptions)
+        public IHttpActionResult GetGridItemViewModels2(ODataQueryOptions<GridItemViewModel> queryOptions)
         {
             // validate the query.
             try
@@ -76,7 +85,7 @@ namespace CV.Presentation.Controllers.OData
 
 
         // GET: odata/GridItemViewModels
-        public IHttpActionResult GetGridItemViewModelsDTO(ODataQueryOptions<GridItemViewModel> queryOptions)
+        public IHttpActionResult GetGridItemViewModels(ODataQueryOptions<UsuarioDTO> queryOptions)
         {
             // validate the query.
             try
@@ -90,10 +99,10 @@ namespace CV.Presentation.Controllers.OData
 
             // return Ok<IEnumerable<GridItemViewModel>>(gridItemViewModels);
             //return StatusCode(HttpStatusCode.NotImplemented);
+            
+            var result = _usuarios.Query(queryOptions) as IQueryable<UsuarioDTO>;
 
-            var result = queryOptions.ApplyTo(items.AsQueryable()) as IQueryable<GridItemViewModel>;
-
-            return Ok<IEnumerable<GridItemViewModel>>(result);
+            return Ok<IEnumerable<UsuarioDTO>>(result);
         }
 
         /*

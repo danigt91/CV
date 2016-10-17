@@ -16,6 +16,8 @@ namespace CV.Infraestructure.Service.Contract
 
         IEnumerable<V> Map(IQueryable<T> entity);
 
+        IQueryable<V> ProjectIQueryable(IQueryable<T> entities);
+
         IEnumerable<V> ByExpression(IQueryable<T> entities, Expression<Func<V, bool>> expression);
 
         IEnumerable<V> ByExpressions(IQueryable<T> entities, IList<Expression<Func<V, bool>>> expressions);
