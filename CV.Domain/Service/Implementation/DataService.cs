@@ -30,7 +30,8 @@ namespace CV.Domain.Service.Implementation
         public IQueryable<TDTO> Query(ODataQueryOptions<TDTO> queryOptions)
         {            
             var usuariosProjection = _mapper.ProjectIQueryable(_entities.All());
-            return AutoMapperOData<TDTO>.ResolveMap(queryOptions.ApplyTo(usuariosProjection));
+            IQueryable query = queryOptions.ApplyTo(usuariosProjection);
+            return AutoMapperOData<TDTO>.ResolveMap(query);
         }
 
     }
