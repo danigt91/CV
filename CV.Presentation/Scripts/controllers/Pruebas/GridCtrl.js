@@ -24,11 +24,15 @@
                     model: {
                         id: "ID",
                         fields: {
+                            ID: { type: "string" },
+                            UserName: { type: "string" }
+                        }
+                        /*fields: {
                             ID: { type: "number" },
                             Nombre: { type: "string" },
                             Valor: { type: "number" },
                             Fecha: { type: "date" }
-                        }
+                        }*/
                     }
                     /* // The way to go when no Accept odata request header
                     data: function (data) {
@@ -50,7 +54,8 @@
             resizable: true,
             filterable: true,
             selectable: true,
-            columns: [{
+            
+            /*columns: [{
                 field: "ID",
                 title: "ID"
             }, {
@@ -61,6 +66,15 @@
             }, {
                 field: "Fecha",
                 format: "{0:dd-MM-yyyy hh:mm:ss}"
+            }
+            ]*/
+
+            columns: [{
+                field: "ID",
+                title: "ID"
+            }, {
+                field: "UserName",
+                title: "Nombre"
             }
             ]
         };

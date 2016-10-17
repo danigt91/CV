@@ -100,7 +100,7 @@ namespace CV.Presentation.Controllers.OData
             // return Ok<IEnumerable<GridItemViewModel>>(gridItemViewModels);
             //return StatusCode(HttpStatusCode.NotImplemented);
             
-            var result = _usuarios.Query(queryOptions) as IQueryable<UsuarioDTO>;
+            var result = _usuarios.Query(queryOptions);
 
             return Ok<IEnumerable<UsuarioDTO>>(result);
         }

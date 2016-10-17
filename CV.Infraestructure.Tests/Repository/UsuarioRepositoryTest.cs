@@ -68,6 +68,27 @@ namespace CV.Infraestructure.Tests.Repository
             Trace.WriteLine("Inyeccion de dependencias ok");
         }
 
+        [Ignore]
+        [TestMethod]
+        public void CreateRandomUsersTest()
+        {
+            for(int i = 0; i < 133; i++)
+            {
+                var nuevoUsuario = new Usuario()
+                {
+                    UserName = "user" + i,
+                    Password = "QWERTY",
+                    ConfirmPassword = "QWERTY"
+                };
+                nuevoUsuario = _usuario.Create(nuevoUsuario);
+
+                Trace.WriteLine("Usuario ID: " + nuevoUsuario.ID);
+            }
+
+            
+            Trace.WriteLine("Inyeccion de dependencias ok");
+        }
+
         [TestMethod]
         [ExpectedException(typeof(DbEntityValidationException))]
         public void CreateUserFailPasswordTest()

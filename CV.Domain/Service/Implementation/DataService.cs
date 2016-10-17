@@ -7,9 +7,11 @@ using CV.Infraestructure.Service.Contract;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Http.OData.Query;
+using CV.Domain.Helper;
 
 namespace CV.Domain.Service.Implementation
 {
@@ -25,12 +27,10 @@ namespace CV.Domain.Service.Implementation
             _entities = entities;
         }
         
-        public IEnumerable<TDTO> Query(ODataQueryOptions<TDTO> queryOptions)
-        {
+        public IQueryable<TDTO> Query(ODataQueryOptions<TDTO> queryOptions)
+        {            
             var usuariosProjection = _mapper.ProjectIQueryable(_entities.All());
-            var queried = queryOptions.ApplyTo(usuariosProjection) as IQueryable<TDTO>;
-            var enumerable = (IEnumerable<TDTO>) queried;
-            return enumerable;
+            return AutoMapperOData<TDTO>.ResolveMap(queryOptions.ApplyTo(usuariosProjection));
         }
 
     }
