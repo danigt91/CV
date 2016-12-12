@@ -1,9 +1,5 @@
 ﻿using CV.Domain.DTO;
 using CV.Domain.Service.Contract;
-using CV.Infraestructure.Data.Entity;
-using CV.Infraestructure.Data.Entity.Contract;
-using CV.Infraestructure.Data.Repository.Contract;
-using CV.Infraestructure.Service.Contract;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Http.OData.Query;
 using CV.Domain.Helper;
+using CV.Domain.Data.Repository;
+using CV.Domain.Data.Entity;
 
 namespace CV.Domain.Service.Implementation
 {

@@ -1,5 +1,5 @@
 ﻿using CV.CrossCutting.Service;
-using CV.Infraestructure.Data.Entity;
+using CV.Domain.Data.Entity;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;

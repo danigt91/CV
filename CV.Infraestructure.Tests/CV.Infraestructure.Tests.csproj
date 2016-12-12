@@ -106,6 +106,10 @@
       <Project>{99f4b9c4-6d96-43e3-b3a8-7dc3cbf6d0bb}</Project>
       <Name>CV.CrossCutting</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CV.Domain\CV.Domain.csproj">
+      <Project>{720CC57B-9929-4C1E-A679-8A6C4FCADE37}</Project>
+      <Name>CV.Domain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CV.Infraestructure\CV.Infraestructure.csproj">
       <Project>{9fc2045b-5df8-49e4-aca1-12e5ebb7205d}</Project>
       <Name>CV.Infraestructure</Name>

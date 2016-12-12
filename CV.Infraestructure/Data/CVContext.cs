@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Data.Entity;
 using CV.Infraestructure.Data.Contract;
-using CV.Infraestructure.Data.Entity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using CV.Domain.Data.Entity;
 
 namespace CV.Infraestructure.Data
 {

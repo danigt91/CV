@@ -2,12 +2,11 @@
 using System;
 using System.Linq;
 using CV.CrossCutting.Service;
-using CV.Infraestructure.Data.Entity;
-using CV.Infraestructure.Data.Repository.Contract;
 using System.Diagnostics;
 using System.Data.Entity.Validation;
-using System.Data.Entity.Infrastructure;
-using CV.Infraestructure.Service.Implementation;
+using CV.Domain.Service.Implementation;
+using CV.Domain.Data.Entity;
+using CV.Domain.Data.Repository;
 
 namespace CV.Infraestructure.Tests.Repository
 {
