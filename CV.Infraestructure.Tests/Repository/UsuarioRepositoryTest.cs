@@ -2,12 +2,11 @@
 using System;
 using System.Linq;
 using CV.CrossCutting.Service;
-using CV.Infraestructure.Data.Entity;
-using CV.Infraestructure.Data.Repository.Contract;
 using System.Diagnostics;
 using System.Data.Entity.Validation;
-using System.Data.Entity.Infrastructure;
-using CV.Infraestructure.Service.Implementation;
+using CV.Domain.Service.Implementation;
+using CV.Domain.Data.Entity;
+using CV.Domain.Data.Repository;
 
 namespace CV.Infraestructure.Tests.Repository
 {
@@ -65,6 +64,27 @@ namespace CV.Infraestructure.Tests.Repository
 
             Trace.WriteLine("Usuario ID: " + nuevoUsuario.ID);
 
+            Trace.WriteLine("Inyeccion de dependencias ok");
+        }
+
+        [Ignore]
+        [TestMethod]
+        public void CreateRandomUsersTest()
+        {
+            for(int i = 0; i < 133; i++)
+            {
+                var nuevoUsuario = new Usuario()
+                {
+                    UserName = "user" + i,
+                    Password = "QWERTY",
+                    ConfirmPassword = "QWERTY"
+                };
+                nuevoUsuario = _usuario.Create(nuevoUsuario);
+
+                Trace.WriteLine("Usuario ID: " + nuevoUsuario.ID);
+            }
+
+            
             Trace.WriteLine("Inyeccion de dependencias ok");
         }
 

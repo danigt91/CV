@@ -1,18 +1,16 @@
 ﻿using Microsoft.Practices.Unity;
 using CV.Infraestructure.Data;
 using CV.Infraestructure.Data.Contract;
-using CV.Infraestructure.Data.Entity;
-using CV.Infraestructure.Data.Entity.Contract;
-using CV.Infraestructure.Data.Repository;
-using CV.Infraestructure.Data.Repository.Contract;
-using CV.Infraestructure.Data.Repository.Implementation;
 using Microsoft.AspNet.Identity.EntityFramework;
 using CV.CrossCutting.Identity;
 using Microsoft.AspNet.Identity;
-using CV.Infraestructure.Service.Contract;
-using CV.Infraestructure.Service.Implementation;
 using CV.Domain.Service.Contract;
 using CV.Domain.Service.Implementation;
+using CV.Domain.Data.Repository;
+using CV.Domain.Data.Entity;
+using CV.Infraestructure.Data.Persistence.Contract;
+using CV.Infraestructure.Data.Persistence.Implementation;
+using CV.Infraestructure.Data.Repository;
 
 namespace CV.CrossCutting.IoC
 {

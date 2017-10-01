@@ -104,6 +104,7 @@
     <Compile Include="Identity\ApplicationOAuthProvider.cs" />
     <Compile Include="Identity\ApplicationSignInManager.cs" />
     <Compile Include="Identity\ApplicationUserManager.cs" />
+    <Compile Include="Managers\ApplicationUserManager.cs" />
     <Compile Include="Service\DependencyResolverService.cs" />
     <Compile Include="IoC\PrincipalContainer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

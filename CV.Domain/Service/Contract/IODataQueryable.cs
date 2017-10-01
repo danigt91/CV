@@ -10,7 +10,7 @@ namespace CV.Domain.Service.Contract
     public interface IODataQueryable<T> where T : class
     {
 
-        IEnumerable<T> Query(ODataQueryOptions<T> queryOptions);
+        IQueryable<T> Query(ODataQueryOptions<T> queryOptions);
 
     }
 }

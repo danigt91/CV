@@ -1,15 +1,15 @@
 ﻿using CV.Domain.DTO;
 using CV.Domain.Service.Contract;
-using CV.Infraestructure.Data.Entity;
-using CV.Infraestructure.Data.Entity.Contract;
-using CV.Infraestructure.Data.Repository.Contract;
-using CV.Infraestructure.Service.Contract;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Http.OData.Query;
+using CV.Domain.Helper;
+using CV.Domain.Data.Repository;
+using CV.Domain.Data.Entity;
 
 namespace CV.Domain.Service.Implementation
 {
@@ -25,13 +25,20 @@ namespace CV.Domain.Service.Implementation
             _entities = entities;
         }
         
-        public IEnumerable<TDTO> Query(ODataQueryOptions<TDTO> queryOptions)
-        {
+        public IQueryable<TDTO> Query(ODataQueryOptions<TDTO> queryOptions)
+        {            
             var usuariosProjection = _mapper.ProjectIQueryable(_entities.All());
             var queried = queryOptions.ApplyTo(usuariosProjection);// as IQueryable<TDTO>;
             //var enumerable = (IEnumerable<TDTO>) queried;
             var enumerable = _mapper.MapNonGeneric(queried);
             return enumerable;
+        }
+
+        public IQueryable<TDTO> Query2(ODataQueryOptions<TDTO> queryOptions)
+        {
+            var usuariosProjection = _mapper.ProjectIQueryable(_entities.All());
+            IQueryable query = queryOptions.ApplyTo(usuariosProjection);
+            return AutoMapperOData<TDTO>.ResolveMap(query);
         }
 
     }
