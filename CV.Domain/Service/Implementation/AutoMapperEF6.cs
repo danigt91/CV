@@ -8,11 +8,14 @@ using System.Linq.Expressions;
 
 namespace CV.Domain.Service.Implementation
 {
-    public class AutoMapperEF6<T, V> : IAutoMapperEF6<T, V>, IFilterable<T, V> where T : EntityBase where V: class
+    public class AutoMapperEF6<T, V> : IAutoMapperEF6<T, V>, IFilterable<T, V> where T : EntityBase where V : class
     {
-        
+
         static MapperConfiguration Config = new MapperConfiguration(cfg =>
-            cfg.CreateMap<T, V>()
+        {
+            cfg.CreateMap<T, V>();
+            cfg.CreateMap<V, V>();
+        }
         );
 
         public IEnumerable<V> Map(IQueryable<T> entity)
@@ -45,6 +48,10 @@ namespace CV.Domain.Service.Implementation
             expressions.ToList().ForEach(expression => query = query.Where(expression));
             return query.AsEnumerable();
         }
-        
+
+        public IEnumerable<V> MapNonGeneric(IQueryable entity)
+        {
+            return entity.ProjectToList<V>(Config);
+        }
     }
 }

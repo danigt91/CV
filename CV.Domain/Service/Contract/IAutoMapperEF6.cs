@@ -20,5 +20,7 @@ namespace CV.Domain.Service.Contract
 
         IEnumerable<V> ByExpressions(IQueryable<T> entities, IList<Expression<Func<V, bool>>> expressions);
 
+        IEnumerable<V> MapNonGeneric(IQueryable entity);
+
     }
 }

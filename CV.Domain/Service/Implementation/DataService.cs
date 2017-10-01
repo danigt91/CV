@@ -25,7 +25,7 @@ namespace CV.Domain.Service.Implementation
             _entities = entities;
         }
         
-        public IQueryable<TDTO> Query(ODataQueryOptions<TDTO> queryOptions)
+        public IEnumerable<TDTO> Query2(ODataQueryOptions<TDTO> queryOptions)
         {            
             var usuariosProjection = _mapper.ProjectIQueryable(_entities.All());
             var queried = queryOptions.ApplyTo(usuariosProjection);// as IQueryable<TDTO>;
@@ -34,7 +34,7 @@ namespace CV.Domain.Service.Implementation
             return enumerable;
         }
 
-        public IQueryable<TDTO> Query2(ODataQueryOptions<TDTO> queryOptions)
+        public IQueryable<TDTO> Query(ODataQueryOptions<TDTO> queryOptions)
         {
             var usuariosProjection = _mapper.ProjectIQueryable(_entities.All());
             IQueryable query = queryOptions.ApplyTo(usuariosProjection);
