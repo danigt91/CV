@@ -28,8 +28,9 @@ namespace CV.Domain.Service.Implementation
         public IEnumerable<TDTO> Query(ODataQueryOptions<TDTO> queryOptions)
         {
             var usuariosProjection = _mapper.ProjectIQueryable(_entities.All());
-            var queried = queryOptions.ApplyTo(usuariosProjection) as IQueryable<TDTO>;
-            var enumerable = (IEnumerable<TDTO>) queried;
+            var queried = queryOptions.ApplyTo(usuariosProjection);// as IQueryable<TDTO>;
+            //var enumerable = (IEnumerable<TDTO>) queried;
+            var enumerable = _mapper.MapNonGeneric(queried);
             return enumerable;
         }
 

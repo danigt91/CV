@@ -11,9 +11,12 @@ namespace CV.Infraestructure.Service.Implementation
 {
     public class AutoMapperEF6<T, V> : IAutoMapperEF6<T, V>, IFilterable<T, V> where T : EntityBase where V: class
     {
-        
-        static MapperConfiguration Config = new MapperConfiguration(cfg =>
-            cfg.CreateMap<T, V>()
+
+        static MapperConfiguration Config = new MapperConfiguration(cfg => 
+            {
+                cfg.CreateMap<T, V>();
+                cfg.CreateMap<V, V>();
+            }
         );
 
         public IEnumerable<V> Map(IQueryable<T> entity)
@@ -45,6 +48,11 @@ namespace CV.Infraestructure.Service.Implementation
             var query = entities.ProjectToQueryable<V>(Config);
             expressions.ToList().ForEach(expression => query = query.Where(expression));
             return query.AsEnumerable();
+        }
+
+        public IEnumerable<V> MapNonGeneric(IQueryable query)
+        {
+            return query.ProjectToList<V>(Config);
         }
         
     }

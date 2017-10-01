@@ -25,7 +25,7 @@
                         id: "ID",
                         fields: {
                             ID: { type: "number" },
-                            Nombre: { type: "string" },
+                            UserName: { type: "string" },
                             Valor: { type: "number" },
                             Fecha: { type: "date" }
                         }
@@ -54,7 +54,7 @@
                 field: "ID",
                 title: "ID"
             }, {
-                field: "Nombre",
+                field: "UserName",
                 title: "Nombre"
             }, {
                 field: "Valor"
